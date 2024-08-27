@@ -1,0 +1,83 @@
+
+{% extends "org_layout.html" %}
+
+{% block content %}   
+    
+
+
+    <div class="container w-50 p-5 mt-5 rounded shadow-lg mybg">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <h1>Camp Detail</h1>
+        {% for r in record %}
+        <form action="/org_camp_detail?campID={{[8]}}" method="post">
+        
+        <div class="row">
+            <div class="col">
+                <label for="">Camp Name</label>
+                <input class="form-control" type="text" name="campName" value="{{r[0]}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Contact Person</label>
+                <input class="form-control" type="text" name="contact" value="{{r[1]}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">City</label>
+                <select name="city" class="form-select">
+                    <option selected disabled>Choose City</option>
+                    <option {% if (r[2]== 'Ranchi') %} selected {% endif %}>Ranchi</option>
+                    <option {% if (r[2]== 'Netarhat') %} selected {% endif %}>Netarhat</option>
+                    <option {% if (r[2]== 'Rishikesh') %} selected {% endif %}>Rishikesh</option>
+                    <option {% if (r[2]== 'Jodhpur') %} selected {% endif %}>Jodhpur</option>
+                    <option {% if (r[2]== 'Puri') %} selected {% endif %}>Puri</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="">Location</label>
+                <input class="form-control" type="text" name="location" value="{{r[3]}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Start Date</label>
+                <input class="form-control" type="date" name="startDate" value="{{r[4]}}">
+            </div>
+            <div class="col">
+                <label for="">End Date</label>
+                <input class="form-control" type="date" name="endDate" value="{{r[5]}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Charges</label>
+                <input class="form-control" type="text" name="charges" value="{{r[6]}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Description</label>
+                <textarea name="descp" class="form-control" row="10">{{r[7]}}</textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary mt-3" type="submit">Edit</button>
+            </div>
+        </div>
+        
+    </form>
+        {% endfor %}
+    </div>
+{% endblock %}

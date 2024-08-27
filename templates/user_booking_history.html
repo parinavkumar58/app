@@ -1,0 +1,41 @@
+{% extends "user_layout.html" %}
+
+{% block content %}   
+
+<div class="container" w-50 p-5 mt-5 >
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th scope="col">camp ID</th>
+        <th scope="col">Camp Name</th>
+        <th scope="col">Contact Person</th>
+        <th scope="col">City</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">Person</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Booking Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in record %}
+      <tr>
+        
+        <td>{{r[0]}}</td>
+        <td>{{r[1]}}</td>
+        <td>{{r[2]}}</td>
+        <td>{{r[3]}}</td>
+        <td>{{r[4]}}</td>
+        <td>{{r[5]}}</td>
+        <td>{{r[6]}}</td>
+        <td>{{r[7]}}</td>
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+</div>
+    
+   
+   
+{% endblock %}
+    

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        .mybg{
+            background-color: lightcyan;
+            
+        }
+        .myrow{
+            background-color: lightblue;
+        }
+        h1{
+            text-align: center;
+            color: darkblue;
+            text-decoration: underline;
+            font-family:'Times New Roman', Times, serif;
+        }
+        i{
+            color: darkblue;
+            margin-left: 5px;
+        }
+        label{
+            color: darkblue;
+            font-family: sans-serif;
+            
+            
+            
+        }
+        .mt-2{
+            text-align: center;
+            font-family: sans-serif;
+        }
+        
+          
+        
+       
+
+   
+       
+
+
+
+    </style>
+    
+</head>
+<body>
+    <div class="container w-50 p-5 mt-5 rounded shadow-lg mybg">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        
+        <h1>ORGANISER LOGIN</h1>
+        <form action="/org_login" method="post">
+            <div class="row myrow">
+                <div class="col">
+                    <label for="">Email</label><i class="fa-solid fa-envelope"></i>
+                    <input id="box" class="form-control" type="email" name="email" placeholder="Enter your email">
+                    
+                </div>
+            </div>
+            <div class="row myrow">
+                <div class="col">
+                    <label for="">Password</label><i class="fa-solid fa-lock"></i>
+                    <input id="box" class="form-control" type="password" name="password" placeholder="Enter your Password">
+                </div>
+            </div>
+            <div class="row myrow">
+                <div class="col">
+                    <button class="btn btn-success mt-3 " type="submit">Login</button>
+                </div>
+            </div>       
+    </form>
+    <div class="mt-2">New organiser?<a class="text-success" href="/org_signup">Signup Now</a></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organiser SignUp</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        .mybg{
+           background-color:seagreen
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="container w-50  p-5 mt-5 rounded shadow-lg mybg">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <h1>Organiser signup</h1>
+        <form action="/org_signup" method="post">
+        <div class="row">
+            <div class="col">
+                <label for="">Name</label>
+                <input class="form-control" type="text" name="name">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Email</label><i class="fa-solid fa-envelope"></i>
+                <input class="form-control" type="email" name="email">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Mobile</label><i class="fa-solid fa-mobile-retro"></i>
+                <input class="form-control" type="text" name="mobile">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Address</label><i class="fa-solid fa-envelope"></i>
+                <input class="form-control" type="text" name="address">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Password</label><i class="fa-solid fa-lock"></i>
+                <input class="form-control" type="password" name="password">
+            </div>
+            <div class="col">
+                <label for="">Confirm Password</label><i class="fa-solid fa-lock"></i>
+                <input class="form-control" type="password">
+            </div>
+        </div>
+      
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-danger mt-3" type="submit">SignUp Now</button>
+            </div>
+        </div>
+    </form>
+    <div class="mt-2">Already Registered?<a class="text-warning" href="/org_login">Login Now</a></div>
+    </div>
+</body>
+</html>

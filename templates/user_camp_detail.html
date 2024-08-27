@@ -1,0 +1,78 @@
+
+{% extends "user_layout.html" %}
+
+{% block content %}   
+    
+
+
+    <div class="container w-50 p-5 mt-5 rounded shadow-lg mybg">
+        
+        <h1>Camp Detail</h1>
+        {% for r in record %}
+        
+        
+        <div class="row">
+            <div class="col">
+                <label for="">Camp Name</label>
+                <div class="form-control">{{r[0]}}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Contact Person</label>
+                <div class="form-control">{{r[1]}}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">City</label>
+                <div class="form-control">{{r[2]}}</div>
+            </div>
+            <div class="col">
+                <label for="">Location</label>
+                <div class="form-control">{{r[3]}}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Start Date</label>
+                <div class="form-control">{{r[4]}}</div>
+            </div>
+            <div class="col">
+                <label for="">End Date</label>
+                <div class="form-control">{{r[5]}}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Charges</label>
+                <div class="form-control">{{r[6]}}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Description</label>
+                <div class="form-control">{{r[7]}}</div>
+            </div>
+        </div>
+        <form action="/user_camp_detail?campID={{r[8]}}&charges={{r[6]}}" method="post">
+        <div class="row">
+            <div class="col">
+                <label for="">choose no. of person</label>
+                <select name="person" id="" class="form-select text-primary">
+                    {% for i in range(1,11) %}
+                       <option>{{i}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary mt-3" type="submit">book now</button>
+            </div>
+        </div>
+        </form>
+        {% endfor %}
+    </div>
+{% endblock %}

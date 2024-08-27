@@ -1,0 +1,90 @@
+
+
+{% extends "org_layout.html" %}
+
+{% block content %}   
+    
+    <style>
+        .mybg{
+            background: linear-gradient(130deg, rgba(244, 52, 90, 0.97) 0%, rgba(222,19,232,1) 100%);
+        }
+    </style>
+
+
+    <div class="container w-50 p-5 mt-5 rounded shadow-lg mybg">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <h1>New Camp Entry</h1>
+        <form action="/org_new_camp" method="post">
+        <div class="row">
+            <div class="col">
+                <label for="">Camp Name</label>
+                <input class="form-control" type="text" name="campName">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Contact Person</label>
+                <input class="form-control" type="text" name="contact">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">State</label>
+                <select class="form-select" onchange="print_city('city', this.selectedIndex);" id="sts" name="state"></select>
+            </div>
+            <div class="col">
+                <label for="">City</label>
+                <select class="form-select" id="city" name="city" ></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Location</label>
+                <input class="form-control" type="text" name="location">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Start Date</label>
+                <input class="form-control" type="date" name="startDate">
+            </div>
+            <div class="col">
+                <label for="">End Date</label>
+                <input class="form-control" type="date" name="endDate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Charges</label>
+                <input class="form-control" type="text" name="charges">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Description</label>
+                <textarea name="descp" class="form-control" row="10"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-danger mt-3" type="submit">Add</button>
+            </div>
+        </div>
+    </form>
+    
+    </div>
+
+    <script src="../static/js/city.js"></script>
+    <script language="javascript">
+        print_state("sts");
+    </script>
+{% endblock %}

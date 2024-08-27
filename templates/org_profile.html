@@ -1,0 +1,73 @@
+{% extends "org_layout.html"%}
+{% block content %} 
+    
+    
+
+
+    <div class="container w-50  p-5 mt-5 rounded shadow-lg mybg">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <h1>ORGANISER PROFILE</h1>
+        <form action="/org_profile" method="post">
+            {% for r in record %}
+        <div class="row">
+            <div class="col">
+                <label for="">Name</label>
+                <input class="form-control" type="text" name="name" value="{{r[0]}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Email</label><i class="fa-solid fa-envelope"></i>
+                <div class="form-control">{{r[1]}}</div>
+
+            </div>
+        
+        <div class="row">
+            <div class="col">
+                <label for="">Mobile</label><i class="fa-solid fa-mobile-retro"></i>
+                <input class="form-control" type="text" name="mobile" value="{{r[2]}}">
+            </div>
+        </div>  
+       
+        
+        <div class="row">
+            <div class="col">
+                <label for="">Address</label><i class="fa-solid fa-mobile-retro"></i>
+                <input class="form-control" type="text" name="address" value="{{r[3]}}">
+            </div>
+        </div>  
+
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary mt-3" type="submit">update Now</button>
+            </div>
+        </div>
+        {% endfor %}
+    </form>
+    <div class="row">
+        <div class="col">
+            <a class="text danger" href="/org_change_password">Change Password</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a class="text danger" href="/org_delete">Account Delete</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a href="/org_logout">Logout</a>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}
